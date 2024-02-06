@@ -19,16 +19,16 @@ export class AcreController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.acreService.findOne(+id);
+    return this.acreService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAcreDto: UpdateAcreDto) {
-    return this.acreService.update(+id, updateAcreDto);
+    return this.acreService.update(id, updateAcreDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.acreService.remove(+id);
+    return this.acreService.remove(id);
   }
 }
