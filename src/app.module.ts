@@ -7,19 +7,21 @@ import { Acre } from './acre/entities/acre.entity';
 import { LandParcelModule } from './land-parcel/land-parcel.module';
 
 @Module({
-  imports: [ TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3001,
-    username: 'root',
-    password: 'root',
-    database: 'feud',
-    entities: [Acre],
-    synchronize: true,
-    logging: true,
-  }),
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3001,
+      username: 'root',
+      password: 'root',
+      database: 'feud',
+      entities: [Acre],
+      synchronize: true,
+      logging: true,
+    }),
     AcreModule,
-    LandParcelModule],
+    LandParcelModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
