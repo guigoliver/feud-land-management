@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateNobleDto } from './dto/create-noble.dto';
 import { UpdateNobleDto } from './dto/update-noble.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Noble } from './entities/noble.entity';
 
 @Injectable()
 export class NobleService {
+  constructor(@InjectRepository(Noble) private nobleRepo: Repository<Noble>) {}
+
   create(createNobleDto: CreateNobleDto) {
-    return 'This action adds a new noble';
+    const noble = this.nobleRepo.create(createNobleDto);
+    return this.nobleRepo.save(noble);
   }
 
   findAll() {
-    return `This action returns all noble`;
+    return this.nobleRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} noble`;
+  findOne(id: string) {
+    return this.nobleRepo.findOne({ where: { id } });
   }
 
-  update(id: number, updateNobleDto: UpdateNobleDto) {
-    return `This action updates a #${id} noble`;
+  update(id: string, updateNobleDto: UpdateNobleDto) {
+    return this.nobleRepo.update({ id }, updateNobleDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} noble`;
+  remove(id: string) {
+    return this.nobleRepo.delete({ id });
   }
 }

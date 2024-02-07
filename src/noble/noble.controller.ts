@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { NobleService } from './noble.service';
 import { CreateNobleDto } from './dto/create-noble.dto';
 import { UpdateNobleDto } from './dto/update-noble.dto';
@@ -19,16 +27,16 @@ export class NobleController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.nobleService.findOne(+id);
+    return this.nobleService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNobleDto: UpdateNobleDto) {
-    return this.nobleService.update(+id, updateNobleDto);
+    return this.nobleService.update(id, updateNobleDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.nobleService.remove(+id);
+    return this.nobleService.remove(id);
   }
 }
