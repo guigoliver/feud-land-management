@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { AcreService } from './acre.service';
 import { CreateAcreDto } from './dto/create-acre.dto';
 import { UpdateAcreDto } from './dto/update-acre.dto';
@@ -27,8 +27,8 @@ export class AcreController {
     return this.acreService.update(id, updateAcreDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.acreService.remove(id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.acreService.remove(id);
+  // }
 }

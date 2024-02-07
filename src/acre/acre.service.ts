@@ -7,29 +7,28 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class AcreService {
-
-  constructor(@InjectRepository(Acre) private acreRepo: Repository<Acre>,) {}
+  constructor(@InjectRepository(Acre) private acreRepo: Repository<Acre>) {}
 
   create(createAcreDto: CreateAcreDto) {
-    const acre = this.acreRepo.create(createAcreDto)
-    return this.acreRepo.save(acre)
+    const acre = this.acreRepo.create(createAcreDto);
+    return this.acreRepo.save(acre);
   }
 
   findAll() {
-    return this.acreRepo.find()
+    return this.acreRepo.find();
   }
 
   findOne(id: string) {
     return this.acreRepo.findOne({
-      where: { id }
-    })
+      where: { id },
+    });
   }
 
   update(id: string, updateAcreDto: UpdateAcreDto) {
-    return this.acreRepo.update({id}, updateAcreDto)
+    return this.acreRepo.update({ id }, updateAcreDto);
   }
 
-  remove(id: string) {
-    return this.acreRepo.delete({id})
-  }
+  // remove(id: string) {
+  //   return this.acreRepo.delete({ id });
+  // }
 }

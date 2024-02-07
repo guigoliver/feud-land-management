@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AcreModule } from './acre/acre.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Acre } from './acre/entities/acre.entity';
+import { LandParcelModule } from './land-parcel/land-parcel.module';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -17,7 +18,8 @@ import { Acre } from './acre/entities/acre.entity';
     synchronize: true,
     logging: true,
   }),
-    AcreModule],
+    AcreModule,
+    LandParcelModule],
   controllers: [AppController],
   providers: [AppService],
 })

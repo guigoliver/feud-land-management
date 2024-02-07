@@ -5,11 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Acre } from './entities/acre.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      Acre
-    ])
-  ],
+  imports: [TypeOrmModule.forFeature([Acre])],
   controllers: [AcreController],
   providers: [AcreService],
 })
