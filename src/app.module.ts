@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Acre } from './acre/entities/acre.entity';
 import { LandParcelModule } from './land-parcel/land-parcel.module';
 import { NobleModule } from './noble/noble.module';
+import { SerfModule } from './serf/serf.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { NobleModule } from './noble/noble.module';
     AcreModule,
     LandParcelModule,
     NobleModule,
+    SerfModule,
   ],
   controllers: [AppController],
   providers: [AppService],
