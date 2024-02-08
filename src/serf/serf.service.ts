@@ -1,26 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSerfDto } from './dto/create-serf.dto';
 import { UpdateSerfDto } from './dto/update-serf.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Serf } from './entities/serf.entity';
 
 @Injectable()
 export class SerfService {
+  constructor(@InjectRepository(Serf) private serfRepo: Repository<Serf>) {}
   create(createSerfDto: CreateSerfDto) {
-    return 'This action adds a new serf';
+    const serf = this.serfRepo.create(createSerfDto);
+    return this.serfRepo.save(serf);
   }
 
   findAll() {
-    return `This action returns all serf`;
+    return this.serfRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} serf`;
+  findOne(id: string) {
+    return this.serfRepo.findOne({ where: { id } });
   }
 
-  update(id: number, updateSerfDto: UpdateSerfDto) {
-    return `This action updates a #${id} serf`;
+  update(id: string, updateSerfDto: UpdateSerfDto) {
+    return this.serfRepo.update({ id }, updateSerfDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} serf`;
+  remove(id: string) {
+    return this.serfRepo.delete({ id });
   }
 }
